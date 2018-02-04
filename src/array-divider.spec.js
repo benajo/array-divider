@@ -27,7 +27,7 @@ describe('ArrayDivider', function() {
   });
 
   it('Should throw error when total buckets is greater than half of array length', function() {
-    expect(() => arrayDivider.divide([1, 2, 3, 4], 3)).to.throw('Total buckets is too large, remainder will be larger than bucket size');
+    expect(() => arrayDivider.divide([1, 2, 3, 4], 3)).to.throw('Total buckets is too large, remainder will be larger than bucket size.');
   });
   
   it('Validate happy paths', function() {
