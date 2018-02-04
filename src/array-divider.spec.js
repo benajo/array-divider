@@ -30,12 +30,14 @@ describe('ArrayDivider', function() {
     expect(() => arrayDivider.divide([1, 2, 3, 4], 3)).to.throw('Total buckets is too large, remainder will be larger than bucket size.');
   });
   
-  it('Validate happy paths', function() {
+  it('Should divide arrays with equal size buckets', function() {
     expect(arrayDivider.divide([1], 1)).to.eql([[1]]);
-
+    expect(arrayDivider.divide([1, 2, 3, 4], 2)).to.eql([[1, 2], [3, 4]]);
+    expect(arrayDivider.divide([1, 2, 3, 4, 5], 5)).to.eql([[1], [2], [3], [4], [5]]);
+  });
+  
+  it('Should divide arrays with an unequal remainder bucket', function() {
     expect(arrayDivider.divide([1, 2, 3, 4, 5], 2)).to.eql([[1, 2, 3], [4, 5]]);
     expect(arrayDivider.divide([1, 2, 3, 4, 5], 3)).to.eql([[1, 2], [3, 4], [5]]);
-
-    expect(arrayDivider.divide([1, 2, 3, 4, 5], 5)).to.eql([[1], [2], [3], [4], [5]]);
   });
 });
